@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 This documentation presents how text analyses and natural language processing have been used on generating insights for which we would call "Juice Dataset". This serves as a technical assessment for the Junior Data Scientist Job at Isentia.
 
 ## Business Problem
-Just from observing the raw data, we can already observe that the content comes from personal posts that contain the word "juice". The word is used in different senses such as in beverages, as a word for creative inspiration, and energy in batteries. In order to gather insights, we will be doing **topic modeling**, and look for the **top n-grams** to learn what people think about when they mention "juice".
+Just from observing the raw data, we can already tell that the content comes from personal posts that contain the word "juice". The word is used in different senses such as in beverages, as a word for creative inspiration, and energy in batteries. In order to gather insights, we will be doing **topic modeling**, and look for the **top n-grams** to learn what people think about when they mention "juice".
 
 ## Exploratory Analysis
 The data has 8,072 documents posted from November 03, 2018 to May 02, 2019 (18 months). The data is gathered from three types of channels: 
