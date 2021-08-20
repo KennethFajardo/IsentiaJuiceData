@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 This documentation presents how text analyses and natural language processing have been used to gather insights for what we would call "Juice Dataset". This is a technical assessment for the Junior Data Scientist role at Isentia.
 
 ## Business Problem
-Observing the raw data, we can infer that the content comes from personal posts that contain the word “juice”. The word is used differently as it relates to  beverages, creativity, and even batteries. In order to gather insights, we will be doing **topic modeling**, and look for the **top n-grams** to learn what people think about when they mention “juice” in their posts.
+Observing the raw data, we can infer that the content comes from personal posts that contain the word “juice”. The word is used differently as it relates to  beverages, creativity, and even batteries. In order to gather insights, we did **topic modeling**, and looked for the **top n-grams** to learn what people think about when they mention “juice” in their posts.
 
 ## Exploratory Analysis
 The data has 8,072 documents posted from November 03, 2018 to May 02, 2019 (18 months). The data is gathered from three types of channels: 
@@ -22,7 +22,7 @@ The data has 8,072 documents posted from November 03, 2018 to May 02, 2019 (18 m
 (2) Microblogs - Twitter (2,528 obs.) 
 (3) Forums (3,699 obs.)
 
-All of the posts were made in the Singaporean region. For visualizations of the data, a dashboard is made available [here](https://public.tableau.com/app/profile/john.kenneth.fajardo/viz/Isentia/Dashboard1), via Tableau Public. A screenshot of the dashboard can be seen below.
+All posts were created in the Singapore region. For visualizations of the data, a dashboard is made available [here](https://public.tableau.com/app/profile/john.kenneth.fajardo/viz/Isentia/Dashboard1), via Tableau Public. A screenshot of the dashboard can be seen below.
 
 ![Fig. 1: Dashboard for the Juice Exploratory Analysis](tableau.PNG)
 
@@ -50,22 +50,22 @@ kable(table(topics(ldadata)), 'html') %>% kable_styling(full_width = F, position
 The table includes the number of documents classified in the respective topics. For example, 472 documents in the dataset talk about politics.
 
 ## Word Frequency
-In addition to topic modeling, we can also gather insights from just observing the most frequent words and n-grams.
+In addition to topic modeling, we can also form insights from just observing the most frequent words and n-grams.
 
 ```{r freq, echo=FALSE}
 library(ggplot2)
 library(quanteda.textstats)
-freqPlot(dfmdata, 'Fig. 1: Top 20 Most Frequent Words')
-freqPlot(dfmdata2, 'Fig. 2: Top 20 Most Frequent 2-Grams')
+freqPlot(dfmdata, 'Fig. 2: Top 20 Most Frequent Words')
+freqPlot(dfmdata2, 'Fig. 3: Top 20 Most Frequent 2-Grams')
 ```
 
 We can see different types of juice mentioned, the phrase “rich people” may imply that juice is common among the affluent people, and the phrase “high sugar” may lead to the inclusion of health in the discourse on juices especially store-bought ones, and so on.
 
 ## Sentiment Analysis
-To observe user activity, particularly if the polarities are either positive or negative based from the word usage in their posts, a polarity-vs-time graph was generated. This would help the analysts pinpoint the dates where the word "juice" became trendy for both good and bad reasons.
+To observe user activity, particularly if the polarities are either positive or negative based from the word usage in their posts, a polarity-vs-time graph was generated. This would help the analysts pinpoint the dates where the word "juice" became a trend for both good and bad reasons.
 ```{r sentiment, echo=FALSE, message=FALSE}
 plot(dfmatdata_posneg$Date, dfmatdata_posneg[,"positive"] - dfmatdata_posneg[,"negative"], 
-     type = "l", ylab = "Sentiment", xlab = "Date", main = "Sentiment of Related Words to \"Juice\" from 2018-11 to 2019-05")
+     type = "l", ylab = "Sentiment", xlab = "Date", main = "Fig. 4: Sentiment of Related Words to \"Juice\" from 2018-11 to 2019-05")
 grid()
 abline(h = 0, lty = 2)
 ```
