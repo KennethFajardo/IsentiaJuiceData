@@ -10,10 +10,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Overview
-This documentation presents how text analyses and natural language processing have been used on generating insights for which we would call "Juice Dataset". This serves as a technical assessment for the Junior Data Scientist Job at Isentia.
+This documentation presents how text analyses and natural language processing have been used to gather insights for what we would call "Juice Dataset". This is a technical assessment for the Junior Data Scientist Job at Isentia.
 
 ## Business Problem
-Just from observing the raw data, we can already tell that the content comes from personal posts that contain the word "juice". The word is used in different senses such as in beverages, as a word for creative inspiration, and energy in batteries. In order to gather insights, we will be doing **topic modeling**, and look for the **top n-grams** to learn what people think about when they mention "juice".
+Observing the raw data, we can infer that the content comes from personal posts that contain the word “juice”. The word is used differently as it relates to  beverages, creativity, and even batteries. In order to gather insights, we will be doing **topic modeling**, and look for the **top n-grams** to learn what people think about when they mention “juice” in their posts.
 
 ## Exploratory Analysis
 The data has 8,072 documents posted from November 03, 2018 to May 02, 2019 (18 months). The data is gathered from three types of channels: 
@@ -22,12 +22,12 @@ The data has 8,072 documents posted from November 03, 2018 to May 02, 2019 (18 m
 (2) Microblogs - Twitter (2,528 obs.) 
 (3) Forums (3,699 obs.)
 
-All of the documents were made in the Singapore region. To see visualizations of the data, a dashboard is made available [here](https://public.tableau.com/app/profile/john.kenneth.fajardo/viz/Isentia/Dashboard1), via Tableau Public. A screenshot of the dashboard can be seen below.
+All of the posts were made in the Singaporean region. For visualizations of the data, a dashboard is made available [here](https://public.tableau.com/app/profile/john.kenneth.fajardo/viz/Isentia/Dashboard1), via Tableau Public. A screenshot of the dashboard can be seen below.
 
 ![Fig. 1: Dashboard for the Juice Exploratory Analysis](tableau.PNG)
 
 ## Topic Modeling
-The statistical model used for assigning topics is *Latent Dirichlet Allocation* (LDA). With the help of the R library, *Quanteda*, we are able to categorize the following group of keywords to help analysts on choosing related topics:
+The statistical model used for assigning topics is *Latent Dirichlet Allocation* (LDA). With the help of the R library, *Quanteda*, we are able to categorize the following group of keywords to help analysts deduce and choose related topics:
 
 ```{r source, echo=FALSE, message=FALSE, cache=TRUE}
 source('datamining.R')
@@ -59,7 +59,7 @@ freqPlot(dfmdata, 'Fig. 1: Top 20 Most Frequent Words')
 freqPlot(dfmdata2, 'Fig. 2: Top 20 Most Frequent 2-Grams')
 ```
 
-We can see different types of juice mentioned, the phrase "rich people" which may imply that juice is for the privileged, the phrase "high sugar" which is a health problem in commercially-procured juices, and so on.
+We can see different types of juice mentioned, the phrase “rich people” may imply that juice is common among the affluent people, and the phrase “high sugar” may lead to the inclusion of health in the discourse on juices especially store-bought ones, and so on.
 
 ## Sentiment Analysis
 To observe user activity, particularly if the polarities are either positive or negative based from the word usage in their posts, a polarity-vs-time graph was generated. This would help the analysts pinpoint the dates where the word "juice" became trendy for both good and bad reasons.
@@ -71,4 +71,4 @@ abline(h = 0, lty = 2)
 ```
 
 ## Conclusion
-Before cleaning the data, looking at the dataset leads to multiple, unorganized observations. With the help of topic modeling and document-frequency matrices, we are able to limit how we classify each document. This is helpful for analysts who specialize with the data -- in this case, the media monitors. A sentiment analysis was also included to visit data points where there are significant increases in polarity over time.
+Before cleaning the sporadic data, looking at the dataset led to multiple, unorganized observations. With the help of topic modeling and document-frequency matrices, we were able to limit and identify topic classifications. A sentiment analysis was also included to illustrate data points where there are significant increases in polarity over time. With these distilled information from a vast load of  information, we help our analysts craft clear-cut conclusions that benefit our clients and the technological world.
